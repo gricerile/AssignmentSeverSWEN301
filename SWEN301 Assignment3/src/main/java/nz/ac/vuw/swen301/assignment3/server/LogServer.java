@@ -8,7 +8,8 @@ public class LogServer extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response){
         int num = Integer.parseInt(request.getParameter("limit"));
-
+        String lev = request.getParameter("level");
+        System.out.println(lev + " " + num);
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response){
 
