@@ -1,5 +1,6 @@
 package nz.ac.vuw.swen301.assignment3.server;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nz.ac.vuw.swen301.assignment3.server.LogEvent;
@@ -11,6 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
+
 public class LogServer extends HttpServlet {
 
     private ArrayList<LogEvent> logs = new ArrayList<LogEvent>();
@@ -19,11 +22,48 @@ public class LogServer extends HttpServlet {
     //By passing in the appropriate options, you can search for
     //available logs in the system. Logs are returned ordered by timestamp, the latest logs first.
     public void doGet(HttpServletRequest request, HttpServletResponse response){
-        //int num = Integer.parseInt(request.getParameter("limit"));
-        //String lev = request.getParameter("level");
-        //System.out.println(lev + " " + num);
+        int num = Integer.parseInt(request.getParameter("limit"));
+        String lev = request.getParameter("level");
+        ArrayList<LogEvent> returnLogs = new ArrayList<LogEvent>();
+        for(int i=0;i<this.logs.size();i++){
+            int count = 0;
+            if(this.logs.get(i).getLevel().equals(lev)){
+               LogEvent log = clone(this.logs.get(i));
+               returnLogs.add(log);
+               count++;
+            }
+            if(count > num){
+                break;
+            }
+        }
 
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jString = "";
+        try {
+            jString = objectMapper.writeValueAsString(returnLogs);
+        } catch (JsonProcessingException ex) {
+            ex.printStackTrace();
+        }
+        response.setHeader("logs", jString);
+    }
 
+    private LogEvent clone(LogEvent log) {
+        LogEvent newLog = new LogEvent();
+        String id = log.getId();
+        newLog.setId(id);
+        String message = log.getMessage();
+        newLog.setMessage(message);
+        String timestamp = log.getTimestamp();
+        newLog.setTimestamp(timestamp);
+        String thread = log.getThread();
+        newLog.setThread(thread);
+        String logger = log.getLogger();
+        newLog.setLogger(logger);
+        String level = log.getLevel();
+        newLog.setLevel(level);
+        String errorDetails = log.getErrorDetails();
+        newLog.setErrorDetails(errorDetails);
+        return newLog;
     }
 
     //add log events

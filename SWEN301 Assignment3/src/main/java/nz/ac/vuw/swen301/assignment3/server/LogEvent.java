@@ -9,6 +9,34 @@ public class LogEvent {
     private String level;
     private String errorDetails;
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setThread(String thread) {
+        this.thread = thread;
+    }
+
+    public void setLogger(String logger) {
+        this.logger = logger;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public void setErrorDetails(String errorDetails) {
+        this.errorDetails = errorDetails;
+    }
+
     public LogEvent(String id, String message, String timestamp, String thread, String logger, String level, String errorDetails) {
         this.id = id;
         this.message = message;
