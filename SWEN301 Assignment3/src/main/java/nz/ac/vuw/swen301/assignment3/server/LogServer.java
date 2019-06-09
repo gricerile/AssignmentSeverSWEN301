@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,11 @@ public class LogServer extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response){
         int num = Integer.parseInt(request.getParameter("limit"));
         String lev = request.getParameter("level");
+        int check = checkInputs(num, lev);
+        if(check==400){
+            response.setStatus(check);
+            return;
+        }
         ArrayList<LogEvent> returnLogs = new ArrayList<LogEvent>();
         for(int i=0;i<this.logs.size();i++){
             int count = 0;
@@ -45,6 +51,43 @@ public class LogServer extends HttpServlet {
             ex.printStackTrace();
         }
         response.setHeader("logs", jString);
+        response.setStatus(200);
+
+        response.setContentType("text/html");
+        PrintWriter out = null;
+        try {
+            out = response.getWriter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Server Date Servlet</title>");
+        out.println("</head>");
+        out.println("<body>");
+
+        out.println("<h1>Shows the Current Server Time</h1>");
+        java.util.Date now = new java.util.Date();
+        out.println(now);
+
+        out.println("</body>");
+        out.println("</html>");
+
+        out.close();
+    }
+
+    public int checkInputs(int num, String lev) {
+        if(num==0){
+            return 400;
+        }
+        if(lev.equals("ALL")||lev.equals("DEBUG")||lev.equals("INFO")||lev.equals("WARN")||lev.equals("ERROR")||lev.equals("FATAL")||lev.equals("TRACE")||lev.equals("OFF")){
+            return 200;
+        }
+        else{
+            return 400;
+        }
     }
 
     private LogEvent clone(LogEvent log) {
@@ -74,10 +117,37 @@ public class LogServer extends HttpServlet {
         try {
             List<LogEvent> listLogEvents = objectMapper.readValue(jsonStringLogs, new TypeReference<List<LogEvent>>(){});
             for (LogEvent event : listLogEvents){
-                logs.add(event);
+                int num = check(event);
+                if(num==400){//invalid item
+                    response.setStatus(num);
+                    return;
+                }
+                if(num==409){//log with id already exists
+                    response.setStatus(num);
+                    return;
+                }
             }
+            for(LogEvent event : listLogEvents){
+                this.logs.add(event);
+            }
+            response.setStatus(201);
         } catch (IOException e) {
             e.printStackTrace();
+            response.setStatus(400);
+        }
+    }
+
+    public int check(LogEvent event) {
+        for(LogEvent log : this.logs){
+            if(event.getId()==log.getId()){
+                return 409;
+            }
+        }
+        if(event.getLevel().equals("ALL")||event.getLevel().equals("DEBUG")||event.getLevel().equals("INFO")||event.getLevel().equals("WARN")||event.getLevel().equals("ERROR")||event.getLevel().equals("FATAL")||event.getLevel().equals("TRACE")||event.getLevel().equals("OFF")){
+            return 200;
+        }
+        else{
+            return 400;
         }
     }
 
