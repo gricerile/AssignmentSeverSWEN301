@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import nz.ac.vuw.swen301.assignment3.server.LogEvent;
 import nz.ac.vuw.swen301.assignment3.server.LogServer;
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -28,7 +30,6 @@ public class WhiteBoxTests {
         LogEvent e = new LogEvent("1","test","time123","methodA","logger1","DEBUG", "string");
         ArrayList<LogEvent> events = new ArrayList<LogEvent>();
         events.add(e);
-
         ObjectMapper objectMapper = new ObjectMapper();
         String jString = "";
         try {
@@ -37,7 +38,8 @@ public class WhiteBoxTests {
             ex.printStackTrace();
         }
 
-        request.setParameter("logs", jString);
+        //request.setParameter("logs", jString);
+        request.setContent(jString.getBytes());
 
         LogServer logServer = new LogServer();
         logServer.doPost(request,response);
@@ -64,7 +66,8 @@ public class WhiteBoxTests {
             ex.printStackTrace();
         }
 
-        request.setParameter("logs", jString);
+        //request.setParameter("logs", jString);
+        request.setContent(jString.getBytes());
 
         LogServer logServer = new LogServer();
         logServer.doPost(request,response);
@@ -90,7 +93,8 @@ public class WhiteBoxTests {
             ex.printStackTrace();
         }
 
-        request.setParameter("logs", jString);
+        //request.setParameter("logs", jString);
+        request.setContent(jString.getBytes());
 
         LogServer logServer = new LogServer();
         logServer.doPost(request,response);
@@ -137,7 +141,8 @@ public class WhiteBoxTests {
             ex.printStackTrace();
         }
 
-        request.setParameter("logs", jString);
+        //request.setParameter("logs", jString);
+        request.setContent(jString.getBytes());
 
         LogServer logServer = new LogServer();
         logServer.doPost(request,response);

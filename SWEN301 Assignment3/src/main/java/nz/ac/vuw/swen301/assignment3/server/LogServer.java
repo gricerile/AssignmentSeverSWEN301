@@ -8,10 +8,13 @@ import nz.ac.vuw.swen301.assignment3.server.LogEvent;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
@@ -23,59 +26,58 @@ public class LogServer extends HttpServlet {
     //By passing in the appropriate options, you can search for
     //available logs in the system. Logs are returned ordered by timestamp, the latest logs first.
     public void doGet(HttpServletRequest request, HttpServletResponse response){
-        int num = Integer.parseInt(request.getParameter("limit"));
-        String lev = request.getParameter("level");
-        int check = checkInputs(num, lev);
-        if(check==400){
-            response.setStatus(check);
-            return;
-        }
-        ArrayList<LogEvent> returnLogs = new ArrayList<LogEvent>();
-        for(int i=0;i<this.logs.size();i++){
-            int count = 0;
-            if(this.logs.get(i).getLevel().equals(lev)){
-               LogEvent log = clone(this.logs.get(i));
-               returnLogs.add(log);
-               count++;
+            int num = Integer.parseInt(request.getParameter("limit"));
+            String lev = request.getParameter("level");
+            int check = checkInputs(num, lev);
+            if (check == 400) {
+                response.setStatus(check);
+                return;
             }
-            if(count > num){
-                break;
+            ArrayList<LogEvent> returnLogs = new ArrayList<LogEvent>();
+            for (int i = 0; i < this.logs.size(); i++) {
+                int count = 0;
+                if (this.logs.get(i).getLevel().equals(lev)) {
+                    LogEvent log = clone(this.logs.get(i));
+                    returnLogs.add(log);
+                    count++;
+                }
+                if (count > num) {
+                    break;
+                }
             }
-        }
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jString = "";
-        try {
-            jString = objectMapper.writeValueAsString(returnLogs);
-        } catch (JsonProcessingException ex) {
-            ex.printStackTrace();
-        }
-        response.setHeader("logs", jString);
-        response.setStatus(200);
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jString = "";
+            try {
+                jString = objectMapper.writeValueAsString(returnLogs);
+            } catch (JsonProcessingException ex) {
+                ex.printStackTrace();
+            }
+            response.setHeader("logs", jString);
+            response.setStatus(200);
+            response.setContentType("text/html");
+            PrintWriter out = null;
+            try {
+                out = response.getWriter();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-        response.setContentType("text/html");
-        PrintWriter out = null;
-        try {
-            out = response.getWriter();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Server Date Servlet</title>");
-        out.println("</head>");
-        out.println("<body>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Logs Servlet</title>");
+            out.println("</head>");
+            out.println("<body>");
 
-        out.println("<h1>Shows the Current Server Time</h1>");
-        java.util.Date now = new java.util.Date();
-        out.println(now);
+            out.println("<h1>Logs of the Server</h1>");
+            java.util.Date now = new java.util.Date();
+            out.println(now);
 
-        out.println("</body>");
-        out.println("</html>");
+            out.println("</body>");
+            out.println("</html>");
 
-        out.close();
+            out.close();
     }
 
     public int checkInputs(int num, String lev) {
@@ -112,10 +114,18 @@ public class LogServer extends HttpServlet {
     //add log events
     //Used to store log events. Note that arrays of log events (and not just single log events) are processed.
     public void doPost(HttpServletRequest request, HttpServletResponse response){
-        String jsonStringLogs = request.getParameter("logs");
+        String result ="";
+        try {
+            result = new BufferedReader(new InputStreamReader(request.getInputStream()))
+                    .lines().collect(Collectors.joining("\n"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //String jsonStringLogs = request.getParameter("logs");
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            List<LogEvent> listLogEvents = objectMapper.readValue(jsonStringLogs, new TypeReference<List<LogEvent>>(){});
+            List<LogEvent> listLogEvents = objectMapper.readValue(result, new TypeReference<List<LogEvent>>(){});
             for (LogEvent event : listLogEvents){
                 int num = check(event);
                 if(num==400){//invalid item
