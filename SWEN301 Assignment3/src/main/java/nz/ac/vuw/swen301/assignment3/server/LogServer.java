@@ -3,6 +3,7 @@ package nz.ac.vuw.swen301.assignment3.server;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import nz.ac.vuw.swen301.assignment3.server.LogEvent;
 
 import javax.servlet.http.HttpServlet;
@@ -34,6 +35,7 @@ public class LogServer extends HttpServlet {
                 return;
             }
             ArrayList<LogEvent> returnLogs = new ArrayList<LogEvent>();
+
             for (int i = 0; i < this.logs.size(); i++) {
                 int count = 0;
                 if (this.logs.get(i).getLevel().equals(lev)) {
@@ -46,37 +48,24 @@ public class LogServer extends HttpServlet {
                 }
             }
 
-            ObjectMapper objectMapper = new ObjectMapper();
-            String jString = "";
-            try {
-                jString = objectMapper.writeValueAsString(returnLogs);
-            } catch (JsonProcessingException ex) {
-                ex.printStackTrace();
-            }
-            response.setHeader("logs", jString);
+//            ObjectMapper objectMapper = new ObjectMapper();
+//            String jString = "";
+//            try {
+//                jString = objectMapper.writeValueAsString(returnLogs);
+//            } catch (JsonProcessingException ex) {
+//                ex.printStackTrace();
+//            }
+//            response.setHeader("logs", jString);
             response.setStatus(200);
             response.setContentType("text/html");
             PrintWriter out = null;
             try {
                 out = response.getWriter();
+                System.out.print(returnLogs);
+                out.println(returnLogs);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Logs Servlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-
-            out.println("<h1>Logs of the Server</h1>");
-            java.util.Date now = new java.util.Date();
-            out.println(now);
-
-            out.println("</body>");
-            out.println("</html>");
-
             out.close();
     }
 
@@ -121,25 +110,33 @@ public class LogServer extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        System.out.println(result);
         //String jsonStringLogs = request.getParameter("logs");
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            List<LogEvent> listLogEvents = objectMapper.readValue(result, new TypeReference<List<LogEvent>>(){});
-            for (LogEvent event : listLogEvents){
-                int num = check(event);
-                if(num==400){//invalid item
-                    response.setStatus(num);
-                    return;
-                }
-                if(num==409){//log with id already exists
-                    response.setStatus(num);
-                    return;
-                }
+            List<String> listLogEventsStrings = objectMapper.readValue(result, new TypeReference<List<String>>(){});
+
+            Gson gson = new Gson();
+            for(String s : listLogEventsStrings){
+                logs.add(gson.fromJson(s,LogEvent.class));
+
             }
-            for(LogEvent event : listLogEvents){
-                this.logs.add(event);
-            }
+
+//            for (LogEvent event : listLogEvents){
+//                int num = check(event);
+//                if(num==400){//invalid item
+//                    response.setStatus(num);
+//                    return;
+//                }
+//                if(num==409){//log with id already exists
+//                    response.setStatus(num);
+//                    return;
+//                }
+//                //System.out.println(num);
+//            }
+//            for(LogEvent event : listLogEvents){
+//                this.logs.add(event);
+//            }
             response.setStatus(201);
         } catch (IOException e) {
             e.printStackTrace();
