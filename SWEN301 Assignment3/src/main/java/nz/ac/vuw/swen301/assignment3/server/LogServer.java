@@ -21,7 +21,7 @@ import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
 public class LogServer extends HttpServlet {
 
-    private ArrayList<LogEvent> logs = new ArrayList<LogEvent>();
+    Appender storage = new Appender();
 
     //Searches for Log
     //By passing in the appropriate options, you can search for
@@ -34,34 +34,15 @@ public class LogServer extends HttpServlet {
                 response.setStatus(check);
                 return;
             }
-            ArrayList<LogEvent> returnLogs = new ArrayList<LogEvent>();
+            ArrayList<LogEvent> returnLogs = storage.getLogs(lev,num);
 
-            for (int i = 0; i < this.logs.size(); i++) {
-                int count = 0;
-                if (this.logs.get(i).getLevel().equals(lev)) {
-                    LogEvent log = clone(this.logs.get(i));
-                    returnLogs.add(log);
-                    count++;
-                }
-                if (count > num) {
-                    break;
-                }
-            }
 
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            String jString = "";
-//            try {
-//                jString = objectMapper.writeValueAsString(returnLogs);
-//            } catch (JsonProcessingException ex) {
-//                ex.printStackTrace();
-//            }
-//            response.setHeader("logs", jString);
             response.setStatus(200);
             response.setContentType("text/html");
             PrintWriter out = null;
             try {
                 out = response.getWriter();
-                System.out.print(returnLogs);
+                //System.out.print(returnLogs);
                 out.println(returnLogs);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -81,25 +62,6 @@ public class LogServer extends HttpServlet {
         }
     }
 
-    private LogEvent clone(LogEvent log) {
-        LogEvent newLog = new LogEvent();
-        String id = log.getId();
-        newLog.setId(id);
-        String message = log.getMessage();
-        newLog.setMessage(message);
-        String timestamp = log.getTimestamp();
-        newLog.setTimestamp(timestamp);
-        String thread = log.getThread();
-        newLog.setThread(thread);
-        String logger = log.getLogger();
-        newLog.setLogger(logger);
-        String level = log.getLevel();
-        newLog.setLevel(level);
-        String errorDetails = log.getErrorDetails();
-        newLog.setErrorDetails(errorDetails);
-        return newLog;
-    }
-
     //add log events
     //Used to store log events. Note that arrays of log events (and not just single log events) are processed.
     public void doPost(HttpServletRequest request, HttpServletResponse response){
@@ -110,56 +72,25 @@ public class LogServer extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(result);
-        //String jsonStringLogs = request.getParameter("logs");
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            List<String> listLogEventsStrings = objectMapper.readValue(result, new TypeReference<List<String>>(){});
+        //System.out.println(result);
+        List<String> resultStrings = new Gson().fromJson(result, List.class);
+        //System.out.print(resultStrings.get(0));
 
-            Gson gson = new Gson();
-            for(String s : listLogEventsStrings){
-                logs.add(gson.fromJson(s,LogEvent.class));
-
+            ArrayList<LogEvent> array = new ArrayList<LogEvent>();
+            for(String s : resultStrings){
+                System.out.print(s);
+                LogEvent l = new Gson().fromJson(s,LogEvent.class);
+                array.add(l);
             }
 
-//            for (LogEvent event : listLogEvents){
-//                int num = check(event);
-//                if(num==400){//invalid item
-//                    response.setStatus(num);
-//                    return;
-//                }
-//                if(num==409){//log with id already exists
-//                    response.setStatus(num);
-//                    return;
-//                }
-//                //System.out.println(num);
-//            }
-//            for(LogEvent event : listLogEvents){
-//                this.logs.add(event);
-//            }
-            response.setStatus(201);
-        } catch (IOException e) {
-            e.printStackTrace();
-            response.setStatus(400);
-        }
+            int status = this.storage.append(array);
+            response.setStatus(status);
     }
 
-    public int check(LogEvent event) {
-        for(LogEvent log : this.logs){
-            if(event.getId()==log.getId()){
-                return 409;
-            }
-        }
-        if(event.getLevel().equals("ALL")||event.getLevel().equals("DEBUG")||event.getLevel().equals("INFO")||event.getLevel().equals("WARN")||event.getLevel().equals("ERROR")||event.getLevel().equals("FATAL")||event.getLevel().equals("TRACE")||event.getLevel().equals("OFF")){
-            return 200;
-        }
-        else{
-            return 400;
-        }
-    }
+
 
     public ArrayList<LogEvent> getLogs(){
-        return logs;
+        return this.storage.getAllLogs();
     }
 
 }
