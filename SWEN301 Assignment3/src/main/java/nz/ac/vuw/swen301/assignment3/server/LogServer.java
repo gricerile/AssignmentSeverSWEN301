@@ -35,15 +35,17 @@ public class LogServer extends HttpServlet {
                 return;
             }
             ArrayList<LogEvent> returnLogs = storage.getLogs(lev,num);
-
+            Gson gson = new Gson();
+            String j = gson.toJson(returnLogs);
 
             response.setStatus(200);
             response.setContentType("text/html");
+            response.setHeader("logs",j);
             PrintWriter out = null;
             try {
                 out = response.getWriter();
-                //System.out.print(returnLogs);
-                out.println(returnLogs);
+                System.out.print(returnLogs);
+                out.println(j);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -78,13 +80,17 @@ public class LogServer extends HttpServlet {
 
             ArrayList<LogEvent> array = new ArrayList<LogEvent>();
             for(String s : resultStrings){
-                System.out.print(s);
+                //System.out.print(s);
                 LogEvent l = new Gson().fromJson(s,LogEvent.class);
                 array.add(l);
             }
 
             int status = this.storage.append(array);
             response.setStatus(status);
+//            for(LogEvent e : getLogs()){
+//             System.out.println(e.getLevel());
+//            }
+            System.out.println(this.getLogs().get(0).getLevel());
     }
 
 

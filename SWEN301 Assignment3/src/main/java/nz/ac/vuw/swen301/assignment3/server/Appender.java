@@ -49,7 +49,9 @@ public class Appender {
 
     public int check(LogEvent event) {
         for(LogEvent log : this.logs){
-            if(event.getId()==log.getId()){
+            if(event.getId().equals(log.getId())){
+                //System.out.println(log.getId());
+                //System.out.println(event.getId());
                 return 409;
             }
         }
@@ -69,6 +71,7 @@ public class Appender {
                 return 400;
             }
             if(number==409){
+                //System.out.println(number);
                 return 409;
             }
         }
