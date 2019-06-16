@@ -11,13 +11,13 @@ public class Appender {
     public ArrayList<LogEvent> getLogs(String lev, int num) {
         ArrayList<LogEvent> returnLogs = new ArrayList<LogEvent>();
         for (int i = 0; i < this.logs.size(); i++) {
-            int count = 0;
-            if (this.logs.get(i).getLevel().equals(lev)) {
-                LogEvent log = clone(this.logs.get(i));
-                returnLogs.add(log);
-                count++;
+            if(returnLogs.size()<num) {
+                if (this.logs.get(i).getLevel().equals(lev)) {
+                    LogEvent log = this.logs.get(i);
+                    returnLogs.add(log);
+                }
             }
-            if (count > num) {
+            if(returnLogs.size()>=num){
                 break;
             }
         }

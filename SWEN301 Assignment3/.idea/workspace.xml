@@ -664,7 +664,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/nz/ac/vuw/swen301/assignment3/server/LogServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nz/ac/vuw/swen301/assignment3/server/LogServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -700,37 +699,40 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="92" column="63" selection-start-line="92" selection-start-column="63" selection-end-line="92" selection-end-column="63" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/Appender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+            <state relative-caret-position="-122">
+              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1414#1415#0" expanded="true" />
-                <element signature="e#1446#1447#0" expanded="true" />
+                <element signature="e#1466#1467#0" expanded="true" />
+                <element signature="e#2643#2644#0" expanded="true" />
+                <element signature="e#2732#2733#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3450#3451#0" expanded="true" />
+                <element signature="e#3498#3499#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="131" column="55" selection-start-line="131" selection-start-column="55" selection-end-line="131" selection-end-column="55" />
+            <state relative-caret-position="558">
+              <caret line="474" lean-forward="true" selection-start-line="474" selection-end-line="474" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -805,8 +807,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/Appender.java" />
-        <option value="$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogServer.java" />
+        <option value="$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java" />
       </list>
     </option>
   </component>
@@ -843,6 +845,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -902,7 +905,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -930,7 +932,7 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.WhiteBoxTests.testDoONEPostANDGet">
-    <configuration name="WhiteBoxTests.testDo1BADPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WhiteBoxTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
         <pattern>
@@ -940,13 +942,28 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.nz.ac.vuw.swen301.assignment3.server" />
       <option name="MAIN_CLASS_NAME" value="test.nz.ac.vuw.swen301.assignment3.server.WhiteBoxTests" />
-      <option name="METHOD_NAME" value="testDo1BADPost" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WhiteBoxTests.DecimalLimitGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.nz.ac.vuw.swen301.assignment3.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.nz.ac.vuw.swen301.assignment3.server" />
+      <option name="MAIN_CLASS_NAME" value="test.nz.ac.vuw.swen301.assignment3.server.WhiteBoxTests" />
+      <option name="METHOD_NAME" value="DecimalLimitGet" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WhiteBoxTests.testDo1PostNEW (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WhiteBoxTests.NegativeLimitGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
         <pattern>
@@ -956,13 +973,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.nz.ac.vuw.swen301.assignment3.server" />
       <option name="MAIN_CLASS_NAME" value="test.nz.ac.vuw.swen301.assignment3.server.WhiteBoxTests" />
-      <option name="METHOD_NAME" value="testDo1PostNEW" />
+      <option name="METHOD_NAME" value="NegativeLimitGet" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WhiteBoxTests.testDoMultiplePostNEW" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WhiteBoxTests.testDoMultiplePostANDGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
         <pattern>
@@ -972,7 +989,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.nz.ac.vuw.swen301.assignment3.server" />
       <option name="MAIN_CLASS_NAME" value="test.nz.ac.vuw.swen301.assignment3.server.WhiteBoxTests" />
-      <option name="METHOD_NAME" value="testDoMultiplePostNEW" />
+      <option name="METHOD_NAME" value="testDoMultiplePostANDGet" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -994,29 +1011,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WhiteBoxTests.testSameIDDoPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.nz.ac.vuw.swen301.assignment3.server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.nz.ac.vuw.swen301.assignment3.server" />
-      <option name="MAIN_CLASS_NAME" value="test.nz.ac.vuw.swen301.assignment3.server.WhiteBoxTests" />
-      <option name="METHOD_NAME" value="testSameIDDoPost" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.WhiteBoxTests.testDoONEPostANDGet" />
-        <item itemvalue="JUnit.WhiteBoxTests.testDo1BADPost" />
-        <item itemvalue="JUnit.WhiteBoxTests.testSameIDDoPost" />
-        <item itemvalue="JUnit.WhiteBoxTests.testDoMultiplePostNEW" />
-        <item itemvalue="JUnit.WhiteBoxTests.testDo1PostNEW (1)" />
+        <item itemvalue="JUnit.WhiteBoxTests.testDoMultiplePostANDGet" />
+        <item itemvalue="JUnit.WhiteBoxTests" />
+        <item itemvalue="JUnit.WhiteBoxTests.NegativeLimitGet" />
+        <item itemvalue="JUnit.WhiteBoxTests.DecimalLimitGet" />
       </list>
     </recent_temporary>
   </component>
@@ -1049,6 +1050,8 @@
       <workItem from="1560381731189" duration="39000" />
       <workItem from="1560562659388" duration="7853000" />
       <workItem from="1560576222988" duration="1897000" />
+      <workItem from="1560647416315" duration="3134000" />
+      <workItem from="1560654232477" duration="4712000" />
     </task>
     <task id="LOCAL-00001" summary="name changes and set ups have been made so a server can potentially run soon">
       <created>1559618508736</created>
@@ -1110,44 +1113,45 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WhiteBoxTests_testSameIDDoPost - 2019.06.15 at 15h 09m 30s.xml">
-      <configuration name="WhiteBoxTests.testSameIDDoPost" configurationId="JUnit" />
+    <history-entry file="WhiteBoxTests_DecimalLimitGet - 2019.06.16 at 16h 21m 16s.xml">
+      <configuration name="WhiteBoxTests.DecimalLimitGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WhiteBoxTests_testSameIDDoPost - 2019.06.15 at 15h 11m 13s.xml">
-      <configuration name="WhiteBoxTests.testSameIDDoPost" configurationId="JUnit" />
+    <history-entry file="WhiteBoxTests_DecimalLimitGet - 2019.06.16 at 16h 23m 21s.xml">
+      <configuration name="WhiteBoxTests.DecimalLimitGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WhiteBoxTests_testSameIDDoPost - 2019.06.15 at 15h 13m 35s.xml">
-      <configuration name="WhiteBoxTests.testSameIDDoPost" configurationId="JUnit" />
+    <history-entry file="WhiteBoxTests_DecimalLimitGet - 2019.06.16 at 16h 23m 33s.xml">
+      <configuration name="WhiteBoxTests.DecimalLimitGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WhiteBoxTests_testSameIDDoPost - 2019.06.15 at 15h 14m 00s.xml">
-      <configuration name="WhiteBoxTests.testSameIDDoPost" configurationId="JUnit" />
+    <history-entry file="WhiteBoxTests_DecimalLimitGet - 2019.06.16 at 16h 23m 55s.xml">
+      <configuration name="WhiteBoxTests.DecimalLimitGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WhiteBoxTests_testDo1BADPost - 2019.06.15 at 15h 15m 19s.xml">
-      <configuration name="WhiteBoxTests.testDo1BADPost" configurationId="JUnit" />
+    <history-entry file="WhiteBoxTests_NegativeLimitGet - 2019.06.16 at 16h 24m 23s.xml">
+      <configuration name="WhiteBoxTests.NegativeLimitGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WhiteBoxTests_testDoONEPostANDGet - 2019.06.15 at 16h 12m 26s.xml">
-      <configuration name="WhiteBoxTests.testDoONEPostANDGet" configurationId="JUnit" />
+    <history-entry file="WhiteBoxTests_NegativeLimitGet - 2019.06.16 at 16h 24m 48s.xml">
+      <configuration name="WhiteBoxTests.NegativeLimitGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WhiteBoxTests_testDoONEPostANDGet - 2019.06.15 at 16h 13m 53s.xml">
-      <configuration name="WhiteBoxTests.testDoONEPostANDGet" configurationId="JUnit" />
+    <history-entry file="WhiteBoxTests_NegativeLimitGet - 2019.06.16 at 16h 25m 11s.xml">
+      <configuration name="WhiteBoxTests.NegativeLimitGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WhiteBoxTests_testDoONEPostANDGet - 2019.06.15 at 16h 14m 49s.xml">
-      <configuration name="WhiteBoxTests.testDoONEPostANDGet" configurationId="JUnit" />
+    <history-entry file="WhiteBoxTests - 2019.06.16 at 16h 25m 28s.xml">
+      <configuration name="WhiteBoxTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WhiteBoxTests_testDoONEPostANDGet - 2019.06.15 at 16h 15m 03s.xml">
-      <configuration name="WhiteBoxTests.testDoONEPostANDGet" configurationId="JUnit" />
+    <history-entry file="WhiteBoxTests_testDoMultiplePostANDGet - 2019.06.16 at 16h 31m 03s.xml">
+      <configuration name="WhiteBoxTests.testDoMultiplePostANDGet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WhiteBoxTests_testDoONEPostANDGet - 2019.06.15 at 16h 16m 19s.xml">
+    <history-entry file="WhiteBoxTests_testDoONEPostANDGet - 2019.06.16 at 16h 31m 30s.xml">
       <configuration name="WhiteBoxTests.testDoONEPostANDGet" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73154000" />
+    <option name="totallyTimeSpent" value="81000000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6340483" visible="true" weight="0.18463181" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6340483" visible="true" weight="0.18890075" />
       <window_info id="Structure" order="1" sideWeight="0.12962963" side_tool="true" weight="0.25773746" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1157,15 +1161,15 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49786553" visible="true" weight="0.18558952" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49786553" visible="true" weight="0.18558952" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.66168624" weight="0.30131003" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49893278" visible="true" weight="0.22161572" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49893278" weight="0.22052401" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010672" side_tool="true" weight="0.21943231" />
-      <window_info anchor="bottom" id="Java Enterprise" order="10" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.32969433" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="bottom" id="Spring" order="13" />
@@ -1322,23 +1326,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="131" column="55" selection-start-line="131" selection-start-column="55" selection-end-line="131" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogEvent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1378,22 +1365,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/Appender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="-122">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1414#1415#0" expanded="true" />
-            <element signature="e#1446#1447#0" expanded="true" />
+            <element signature="e#1466#1467#0" expanded="true" />
+            <element signature="e#2643#2644#0" expanded="true" />
+            <element signature="e#2732#2733#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="92" column="63" selection-start-line="92" selection-start-column="63" selection-end-line="92" selection-end-column="63" />
+        <state relative-caret-position="504">
+          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3450#3451#0" expanded="true" />
+            <element signature="e#3498#3499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="474" lean-forward="true" selection-start-line="474" selection-end-line="474" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -27,7 +27,13 @@ public class LogServer extends HttpServlet {
     //By passing in the appropriate options, you can search for
     //available logs in the system. Logs are returned ordered by timestamp, the latest logs first.
     public void doGet(HttpServletRequest request, HttpServletResponse response){
-            int num = Integer.parseInt(request.getParameter("limit"));
+        int num=0;
+        try {
+                num = Integer.parseInt(request.getParameter("limit"));
+            } catch(NumberFormatException e){
+                response.setStatus(400);
+                return;
+            }
             String lev = request.getParameter("level");
             int check = checkInputs(num, lev);
             if (check == 400) {
@@ -39,21 +45,21 @@ public class LogServer extends HttpServlet {
             String j = gson.toJson(returnLogs);
 
             response.setStatus(200);
-            response.setContentType("text/html");
-            response.setHeader("logs",j);
-            PrintWriter out = null;
+            response.setContentType("application/json");
+
             try {
-                out = response.getWriter();
-                System.out.print(returnLogs);
-                out.println(j);
+                PrintWriter out = response.getWriter();
+                out.print(j);
+                out.close();
+                //System.out.println(j);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            out.close();
+
     }
 
     public int checkInputs(int num, String lev) {
-        if(num==0){
+        if(num<0){
             return 400;
         }
         if(lev.equals("ALL")||lev.equals("DEBUG")||lev.equals("INFO")||lev.equals("WARN")||lev.equals("ERROR")||lev.equals("FATAL")||lev.equals("TRACE")||lev.equals("OFF")){
@@ -90,7 +96,7 @@ public class LogServer extends HttpServlet {
 //            for(LogEvent e : getLogs()){
 //             System.out.println(e.getLevel());
 //            }
-            System.out.println(this.getLogs().get(0).getLevel());
+//            System.out.println(this.getLogs().get(0).getLevel());
     }
 
 
