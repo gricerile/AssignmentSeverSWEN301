@@ -50,11 +50,10 @@ public class Appender {
     public int check(LogEvent event) {
         for(LogEvent log : this.logs){
             if(event.getId().equals(log.getId())){
-                //System.out.println(log.getId());
-                //System.out.println(event.getId());
                 return 409;
             }
         }
+
         if(event.getLevel().equals("ALL")||event.getLevel().equals("DEBUG")||event.getLevel().equals("INFO")||event.getLevel().equals("WARN")||event.getLevel().equals("ERROR")||event.getLevel().equals("FATAL")||event.getLevel().equals("TRACE")||event.getLevel().equals("OFF")){
             return 200;
         }
@@ -80,6 +79,10 @@ public class Appender {
         }
         sort();
         return 200;
+    }
+
+    public void clear(){
+        this.logs.clear();
     }
 
     public void sort(){

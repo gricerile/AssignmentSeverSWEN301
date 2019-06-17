@@ -21,16 +21,31 @@ import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
 public class LogServer extends HttpServlet {
 
-    Appender storage = new Appender();
+    static Appender storage = new Appender();
 
     //Searches for Log
     //By passing in the appropriate options, you can search for
     //available logs in the system. Logs are returned ordered by timestamp, the latest logs first.
     public void doGet(HttpServletRequest request, HttpServletResponse response){
-        int num=0;
-        try {
+        if(request.getParameter("statsRequest")!=null){
+            ArrayList<LogEvent> allLogsStats = getLogs();
+            Gson gson = new Gson();
+            String j = gson.toJson(allLogsStats);
+            try {
+                PrintWriter out = response.getWriter();
+                response.getOutputStream().print(j);
+                out.print(j);
+                out.close();
+                //System.out.println(j);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(request.getParameter("statsRequest")==null) {
+            int num = 0;
+            try {
                 num = Integer.parseInt(request.getParameter("limit"));
-            } catch(NumberFormatException e){
+            } catch (NumberFormatException e) {
                 response.setStatus(400);
                 return;
             }
@@ -40,7 +55,7 @@ public class LogServer extends HttpServlet {
                 response.setStatus(check);
                 return;
             }
-            ArrayList<LogEvent> returnLogs = storage.getLogs(lev,num);
+            ArrayList<LogEvent> returnLogs = storage.getLogs(lev, num);
             Gson gson = new Gson();
             String j = gson.toJson(returnLogs);
 
@@ -55,7 +70,7 @@ public class LogServer extends HttpServlet {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+        }
     }
 
     public int checkInputs(int num, String lev) {
@@ -85,24 +100,27 @@ public class LogServer extends HttpServlet {
         //System.out.print(resultStrings.get(0));
 
             ArrayList<LogEvent> array = new ArrayList<LogEvent>();
+            if(resultStrings==null){
+                response.setStatus(400);
+                return;
+            }
             for(String s : resultStrings){
                 //System.out.print(s);
                 LogEvent l = new Gson().fromJson(s,LogEvent.class);
                 array.add(l);
+                //System.out.println(l.getLevel());
             }
-
+            //System.out.println();
             int status = this.storage.append(array);
             response.setStatus(status);
-//            for(LogEvent e : getLogs()){
-//             System.out.println(e.getLevel());
-//            }
-//            System.out.println(this.getLogs().get(0).getLevel());
     }
 
 
-
-    public ArrayList<LogEvent> getLogs(){
-        return this.storage.getAllLogs();
+    public void clearStorage(){
+        storage.clear();
+    }
+    public static ArrayList<LogEvent> getLogs(){
+        return storage.getAllLogs();
     }
 
 }
