@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b0910ee-c916-4e11-93d5-efb360799b03" name="Default Changelist" comment="added more">
+    <list default="true" id="2b0910ee-c916-4e11-93d5-efb360799b03" name="Default Changelist" comment="started work on stats server, appender and serverlogs had to become static in some areas to work. tests must also have the appender cleaned as a consequence. more white box tests have been added and black box testing will begin tomorrow.">
       <change afterPath="$USER_HOME$/.IntelliJIdea2019.1/system/compile-server/httpclient_d5481b6e/mappings/sourceToClass.tab" afterDir="false" />
       <change afterPath="$USER_HOME$/.IntelliJIdea2019.1/system/compile-server/httpclient_d5481b6e/mappings/sourceToClass.tab.keystream" afterDir="false" />
       <change afterPath="$USER_HOME$/.IntelliJIdea2019.1/system/compile-server/swen301_assignment3_5a6424dc/ustamp" afterDir="false" />
@@ -684,77 +684,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/Appender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1434#1435#0" expanded="true" />
-                <element signature="e#1466#1467#0" expanded="true" />
-                <element signature="e#2507#2508#0" expanded="true" />
-                <element signature="e#2526#2527#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="119" column="24" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4256#4257#0" expanded="true" />
-                <element signature="e#4275#4276#0" expanded="true" />
-                <element signature="e#4320#4321#0" expanded="true" />
-                <element signature="e#4363#4364#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/StatsServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="55" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2187#2188#0" expanded="true" />
-                <element signature="e#2219#2220#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9299">
-              <caret line="547" column="33" selection-start-line="547" selection-start-column="33" selection-end-line="547" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="306">
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -764,33 +697,42 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
               <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-              <folding>
-                <element signature="e#299#300#0" expanded="true" />
-                <element signature="e#327#328#0" expanded="true" />
-                <element signature="e#373#374#0" expanded="true" />
-                <element signature="e#411#412#0" expanded="true" />
-                <element signature="e#461#462#0" expanded="true" />
-                <element signature="e#503#504#0" expanded="true" />
-                <element signature="e#547#548#0" expanded="true" />
-                <element signature="e#583#584#0" expanded="true" />
-                <element signature="e#627#628#0" expanded="true" />
-                <element signature="e#663#664#0" expanded="true" />
-                <element signature="e#705#706#0" expanded="true" />
-                <element signature="e#739#740#0" expanded="true" />
-                <element signature="e#795#796#0" expanded="true" />
-                <element signature="e#843#844#0" expanded="true" />
-                <element signature="e#1575#1576#0" expanded="true" />
-                <element signature="e#1603#1604#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+            <state relative-caret-position="170">
+              <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/StatsServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="135" column="9" lean-forward="true" selection-start-line="135" selection-start-column="9" selection-end-line="135" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/BlackBoxTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-5321">
+              <caret line="153" column="9" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -814,11 +756,11 @@
         <option value="$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogEvent.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/Appender.java" />
-        <option value="$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/StatsServer.java" />
+        <option value="$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/Appender.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogServer.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -846,9 +788,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="4" />
-    <option name="width" value="942" />
-    <option name="height" value="1038" />
+    <option name="x" value="8" />
+    <option name="width" value="932" />
+    <option name="height" value="1037" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -857,6 +799,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -915,7 +858,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -923,7 +865,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -1025,9 +967,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.WhiteBoxTests" />
+        <item itemvalue="JUnit.WhiteBoxTests.testStatsServer" />
         <item itemvalue="JUnit.WhiteBoxTests.testDo1Post" />
         <item itemvalue="JUnit.WhiteBoxTests.testDo1BADLevelPost" />
-        <item itemvalue="JUnit.WhiteBoxTests.testStatsServer" />
         <item itemvalue="JUnit.WhiteBoxTests.testEmptyLog" />
       </list>
     </recent_temporary>
@@ -1068,7 +1010,8 @@
       <workItem from="1560740416588" duration="1374000" />
       <workItem from="1560745478264" duration="4765000" />
       <workItem from="1560753395765" duration="3224000" />
-      <workItem from="1560757396309" duration="798000" />
+      <workItem from="1560757396309" duration="1092000" />
+      <workItem from="1560816465877" duration="15459000" />
     </task>
     <task id="LOCAL-00001" summary="name changes and set ups have been made so a server can potentially run soon">
       <created>1559618508736</created>
@@ -1126,69 +1069,85 @@
       <option name="project" value="LOCAL" />
       <updated>1560562950416</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="started work on stats server, appender and serverlogs had to become static in some areas to work. tests must also have the appender cleaned as a consequence. more white box tests have been added and black box testing will begin tomorrow.">
+      <created>1560758413855</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1560758413855</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WhiteBoxTests - 2019.06.17 at 19h 37m 10s.xml">
+    <history-entry file="WhiteBoxTests_testStatsServer - 2019.06.18 at 15h 23m 29s.xml">
+      <configuration name="WhiteBoxTests.testStatsServer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WhiteBoxTests_testStatsServer - 2019.06.18 at 15h 24m 05s.xml">
+      <configuration name="WhiteBoxTests.testStatsServer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WhiteBoxTests_testStatsServer - 2019.06.18 at 15h 24m 46s.xml">
+      <configuration name="WhiteBoxTests.testStatsServer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WhiteBoxTests_testStatsServer - 2019.06.18 at 15h 27m 46s.xml">
+      <configuration name="WhiteBoxTests.testStatsServer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WhiteBoxTests_testStatsServer - 2019.06.18 at 15h 28m 24s.xml">
+      <configuration name="WhiteBoxTests.testStatsServer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WhiteBoxTests_testStatsServer - 2019.06.18 at 15h 28m 52s.xml">
+      <configuration name="WhiteBoxTests.testStatsServer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WhiteBoxTests_testStatsServer - 2019.06.18 at 16h 52m 40s.xml">
+      <configuration name="WhiteBoxTests.testStatsServer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WhiteBoxTests - 2019.06.18 at 17h 36m 35s.xml">
       <configuration name="WhiteBoxTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WhiteBoxTests_testDo1BADLevelPost - 2019.06.17 at 19h 38m 45s.xml">
-      <configuration name="WhiteBoxTests.testDo1BADLevelPost" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WhiteBoxTests - 2019.06.17 at 19h 38m 54s.xml">
+    <history-entry file="WhiteBoxTests - 2019.06.18 at 17h 37m 51s.xml">
       <configuration name="WhiteBoxTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="WhiteBoxTests - 2019.06.17 at 19h 40m 10s.xml">
-      <configuration name="WhiteBoxTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WhiteBoxTests - 2019.06.17 at 19h 45m 42s.xml">
-      <configuration name="WhiteBoxTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WhiteBoxTests_testDo1Post - 2019.06.17 at 19h 45m 52s.xml">
-      <configuration name="WhiteBoxTests.testDo1Post" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WhiteBoxTests_testDo1BADLevelPost - 2019.06.17 at 19h 46m 00s.xml">
-      <configuration name="WhiteBoxTests.testDo1BADLevelPost" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WhiteBoxTests - 2019.06.17 at 19h 46m 25s.xml">
-      <configuration name="WhiteBoxTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WhiteBoxTests_testDo1Post - 2019.06.17 at 19h 46m 37s.xml">
-      <configuration name="WhiteBoxTests.testDo1Post" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="WhiteBoxTests - 2019.06.17 at 19h 49m 54s.xml">
+    <history-entry file="WhiteBoxTests - 2019.06.18 at 17h 58m 32s.xml">
       <configuration name="WhiteBoxTests" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99169000" />
+    <option name="totallyTimeSpent" value="114922000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6340483" visible="true" weight="0.20170757" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6322418" visible="true" weight="0.20384204" />
       <window_info id="Structure" order="1" sideWeight="0.12962963" side_tool="true" weight="0.25773746" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.36595175" side_tool="true" weight="0.18249734" />
+      <window_info id="Favorites" order="6" sideWeight="0.36775818" side_tool="true" visible="true" weight="0.20384204" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49786553" visible="true" weight="0.18558952" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49786553" weight="0.18558952" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.66168624" weight="0.30131003" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49893278" weight="0.22052401" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32969433" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49893278" visible="true" weight="0.13318777" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010672" side_tool="true" weight="0.21943231" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.32969433" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32969433" />
       <window_info anchor="bottom" id="Spring" order="13" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.18340611" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -1248,20 +1207,14 @@
     <MESSAGE value="changed the post method so there is no get parameter and changed the tests to set content of requests instead of parameters." />
     <MESSAGE value="server tests do not work and the server needs to display the logs in the html output but it is not doing this. lots needs to be done" />
     <MESSAGE value="added more" />
-    <option name="LAST_COMMIT_MESSAGE" value="added more" />
+    <MESSAGE value="started work on stats server, appender and serverlogs had to become static in some areas to work. tests must also have the appender cleaned as a consequence. more white box tests have been added and black box testing will begin tomorrow." />
+    <option name="LAST_COMMIT_MESSAGE" value="started work on stats server, appender and serverlogs had to become static in some areas to work. tests must also have the appender cleaned as a consequence. more white box tests have been added and black box testing will begin tomorrow." />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.17/log4j-1.2.17.jar!/org/apache/log4j/pattern/LogEvent.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="60" column="31" lean-forward="true" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/BlackBoxTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
@@ -1336,42 +1289,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="e#299#300#0" expanded="true" />
-            <element signature="e#327#328#0" expanded="true" />
-            <element signature="e#373#374#0" expanded="true" />
-            <element signature="e#411#412#0" expanded="true" />
-            <element signature="e#461#462#0" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#547#548#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#627#628#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#705#706#0" expanded="true" />
-            <element signature="e#739#740#0" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-            <element signature="e#843#844#0" expanded="true" />
-            <element signature="e#1575#1576#0" expanded="true" />
-            <element signature="e#1603#1604#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1382,53 +1303,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/Appender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1434#1435#0" expanded="true" />
-            <element signature="e#1466#1467#0" expanded="true" />
-            <element signature="e#2507#2508#0" expanded="true" />
-            <element signature="e#2526#2527#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="306">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/LogServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="119" column="24" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4256#4257#0" expanded="true" />
-            <element signature="e#4275#4276#0" expanded="true" />
-            <element signature="e#4320#4321#0" expanded="true" />
-            <element signature="e#4363#4364#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/BlackBoxTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/test/nz/ac/vuw/swen301/assignment3/server/WhiteBoxTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9299">
-          <caret line="547" column="33" selection-start-line="547" selection-start-column="33" selection-end-line="547" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-5321">
+          <caret line="153" column="9" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nz/ac/vuw/swen301/assignment3/server/StatsServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="55" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2187#2188#0" expanded="true" />
-            <element signature="e#2219#2220#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="135" column="9" lean-forward="true" selection-start-line="135" selection-start-column="9" selection-end-line="135" selection-end-column="9" />
         </state>
       </provider>
     </entry>

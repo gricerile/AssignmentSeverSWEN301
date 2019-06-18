@@ -18,7 +18,7 @@ public class Appender {
                 }
             }
             if(returnLogs.size()>=num){
-                break;
+                return returnLogs;
             }
         }
         return returnLogs;

@@ -21,6 +21,10 @@ import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
 public class LogServer extends HttpServlet {
 
+    public LogServer(){
+        clearStorage();//clear information from previous logsServer's appender
+    }
+
     static Appender storage = new Appender();
 
     //Searches for Log
@@ -34,7 +38,6 @@ public class LogServer extends HttpServlet {
             try {
                 PrintWriter out = response.getWriter();
                 response.getOutputStream().print(j);
-                out.print(j);
                 out.close();
                 //System.out.println(j);
             } catch (IOException e) {
@@ -58,7 +61,7 @@ public class LogServer extends HttpServlet {
             ArrayList<LogEvent> returnLogs = storage.getLogs(lev, num);
             Gson gson = new Gson();
             String j = gson.toJson(returnLogs);
-
+            //System.out.println(j);
             response.setStatus(200);
             response.setContentType("application/json");
 
@@ -99,20 +102,19 @@ public class LogServer extends HttpServlet {
         List<String> resultStrings = new Gson().fromJson(result, List.class);
         //System.out.print(resultStrings.get(0));
 
-            ArrayList<LogEvent> array = new ArrayList<LogEvent>();
-            if(resultStrings==null){
-                response.setStatus(400);
-                return;
-            }
-            for(String s : resultStrings){
-                //System.out.print(s);
-                LogEvent l = new Gson().fromJson(s,LogEvent.class);
-                array.add(l);
-                //System.out.println(l.getLevel());
-            }
-            //System.out.println();
-            int status = this.storage.append(array);
-            response.setStatus(status);
+        ArrayList<LogEvent> array = new ArrayList<LogEvent>();
+        if(resultStrings==null){
+            response.setStatus(400);
+            return;
+        }
+        for(String s : resultStrings){
+            //System.out.print(s);
+            LogEvent l = new Gson().fromJson(s,LogEvent.class);
+            array.add(l);
+            //System.out.println(l.getLevel());
+        }
+        int status = this.storage.append(array);
+        response.setStatus(status);
     }
 
 
