@@ -45,6 +45,10 @@ public class LogServer extends HttpServlet {
             }
         }
         else if(request.getParameter("statsRequest")==null) {
+            if(request.getParameter("limit")==null||request.getParameter("level")==null){
+                response.setStatus(400);
+                return;
+            }
             int num = 0;
             try {
                 num = Integer.parseInt(request.getParameter("limit"));
@@ -91,7 +95,24 @@ public class LogServer extends HttpServlet {
     //add log events
     //Used to store log events. Note that arrays of log events (and not just single log events) are processed.
     public void doPost(HttpServletRequest request, HttpServletResponse response){
-        String result ="";
+        if(request.getContentType()==null&&request.getHeader("ContentType")==null){
+            response.setStatus(400);
+            return;
+        }
+        if(request.getContentType()==null&&request.getHeader("ContentType")!=null){
+            if(!request.getHeader("ContentType").equals("application/json")){
+                response.setStatus(400);
+                return;
+            }
+        }
+        if(request.getContentType()!=null&&request.getHeader("ContentType")==null){
+            if(!request.getContentType().equals("application/json")){
+                response.setStatus(400);
+                return;
+            }
+        }
+
+        String result = "";
         try {
             result = new BufferedReader(new InputStreamReader(request.getInputStream()))
                     .lines().collect(Collectors.joining("\n"));
@@ -103,13 +124,13 @@ public class LogServer extends HttpServlet {
         //System.out.print(resultStrings.get(0));
 
         ArrayList<LogEvent> array = new ArrayList<LogEvent>();
-        if(resultStrings==null){
+        if (resultStrings == null) {
             response.setStatus(400);
             return;
         }
-        for(String s : resultStrings){
+        for (String s : resultStrings) {
             //System.out.print(s);
-            LogEvent l = new Gson().fromJson(s,LogEvent.class);
+            LogEvent l = new Gson().fromJson(s, LogEvent.class);
             array.add(l);
             //System.out.println(l.getLevel());
         }
@@ -118,11 +139,15 @@ public class LogServer extends HttpServlet {
     }
 
 
+
     public void clearStorage(){
         storage.clear();
     }
     public static ArrayList<LogEvent> getLogs(){
         return storage.getAllLogs();
+    }
+    public Appender getStorage(){
+        return this.storage;
     }
 
 }

@@ -197,7 +197,7 @@ public class StatsServer extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        response.setContentType("application/vnd.ms-excel");
         response.setStatus(200);
     }
 

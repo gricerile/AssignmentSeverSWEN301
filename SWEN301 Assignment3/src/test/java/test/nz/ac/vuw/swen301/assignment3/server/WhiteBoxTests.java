@@ -48,6 +48,7 @@ public class WhiteBoxTests {
 
         String j = SINGLELOG;
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
 
         request.setContent(j.getBytes());
@@ -65,6 +66,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -84,6 +86,7 @@ public class WhiteBoxTests {
 
         String j = SINGLELOG;
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
 
         request.setContent(j.getBytes());
@@ -92,6 +95,7 @@ public class WhiteBoxTests {
         logServer.doPost(request,response);
 
         MockHttpServletRequest request2 = new MockHttpServletRequest();
+        request2.setContentType("application/json");
         MockHttpServletResponse response2 = new MockHttpServletResponse();
 
         request2.setContent(j.getBytes());
@@ -109,6 +113,7 @@ public class WhiteBoxTests {
 
         String j = "[\"{\\\"id\\\":\\\"96898390-4676-459f-b437-ac10cb4a9420\\\",\\\"message\\\":\\\"TEST\\\",\\\"timestamp\\\":\\\"2019-06-12T12:06:10.431Z\\\",\\\"thread\\\":\\\"createDummyLogs\\\",\\\"logger\\\":\\\"serverTest\\\",\\\"level\\\":\\\"BAD\\\",\\\"errorDetails\\\":\\\"java.lang.RuntimeException\\\"}\"]";
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
 
         request.setContent(j.getBytes());
@@ -124,6 +129,7 @@ public class WhiteBoxTests {
         String j = SINGLELOG;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -162,6 +168,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -199,6 +206,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -222,6 +230,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -252,6 +261,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -282,6 +292,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -312,6 +323,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -342,6 +354,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -372,6 +385,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -401,6 +415,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -431,6 +446,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -460,6 +476,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -489,6 +506,7 @@ public class WhiteBoxTests {
         String j = "";
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -518,6 +536,7 @@ public class WhiteBoxTests {
         String j = MANYLOGS;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -534,6 +553,7 @@ public class WhiteBoxTests {
         String j = SINGLELOG;
 
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
         MockHttpServletResponse response = new MockHttpServletResponse();
         request.setContent(j.getBytes());
 
@@ -546,6 +566,140 @@ public class WhiteBoxTests {
         request2.setParameter("statsRequest");
         statsServer.doGet(request2, response2);
         assertEquals(200, response2.getStatus());
+        assertEquals("application/vnd.ms-excel",response2.getContentType());
+        logServer.clearStorage();
+    }
+
+    @Test
+    public void testAppenderAdd(){
+        String j = SINGLELOG;
+        LogServer logServer = new LogServer();
+        LogEvent log = new LogEvent("96898390-4676-459f-b437-ac10cb4a9320","test","2019-06-12T12:06:12.431Z","whiteboxtest","testlogger","INFO","test message");
+        ArrayList<LogEvent> logs = new ArrayList<>();
+        logs.add(log);
+        logServer.getStorage().append(logs);
+        ArrayList<LogEvent> returnedLogs = logServer.getStorage().getLogs("INFO",1);
+        assertEquals("INFO",returnedLogs.get(0).getLevel());
+
+        logServer.clearStorage();
+    }
+
+    @Test
+    public void testbadID(){
+        String j = SINGLELOG;
+        LogServer logServer = new LogServer();
+        LogEvent log = new LogEvent("96898390-4676-459f","test","2019-06-12T12:06:12.431Z","whiteboxtest","testlogger","INFO","test message");
+        ArrayList<LogEvent> logs = new ArrayList<>();
+        logs.add(log);
+        logServer.getStorage().append(logs);
+        ArrayList<LogEvent> returnedLogs = logServer.getStorage().getLogs("INFO",1);
+        assertEquals(0,returnedLogs.size());
+        logServer.clearStorage();
+    }
+
+    @Test
+    public void testbadtimestamp(){
+        String j = SINGLELOG;
+        LogServer logServer = new LogServer();
+        LogEvent log = new LogEvent("96898390-4676-459f-b437-ac10cb4a9320","test","2019-06-12","whiteboxtest","testlogger","INFO","test message");
+        ArrayList<LogEvent> logs = new ArrayList<>();
+        logs.add(log);
+        logServer.getStorage().append(logs);
+        ArrayList<LogEvent> returnedLogs = logServer.getStorage().getLogs("INFO",1);
+        assertEquals(0,returnedLogs.size());
+        logServer.clearStorage();
+    }
+
+    @Test
+    public void testnullParameter(){
+        String j = SINGLELOG;
+        LogServer logServer = new LogServer();
+        LogEvent log = new LogEvent("96898390-4676-459f-b437-ac10cb4a9320","test","2019-06-12T12:06:12.431Z",null,"testlogger","INFO","test message");
+        ArrayList<LogEvent> logs = new ArrayList<>();
+        logs.add(log);
+        logServer.getStorage().append(logs);
+        ArrayList<LogEvent> returnedLogs = logServer.getStorage().getLogs("INFO",1);
+        assertEquals(0,returnedLogs.size());
+        logServer.clearStorage();
+    }
+
+    @Test
+    public void testSameID(){
+        String j = SINGLELOG;
+        LogServer logServer = new LogServer();
+        LogEvent log1 = new LogEvent("96898390-4676-459f-b437-ac10cb4a9320","test","2019-06-12T12:06:12.431Z","whiteboxtest","testlogger","INFO","test message");
+        LogEvent log2 = new LogEvent("96898390-4676-459f-b437-ac10cb4a9320","test","2019-06-12T12:06:12.431Z","whiteboxtest","testlogger","INFO","test message");
+        ArrayList<LogEvent> logs = new ArrayList<>();
+        logs.add(log1);
+        logs.add(log2);
+        logServer.getStorage().append(logs);
+        ArrayList<LogEvent> returnedLogs = logServer.getStorage().getLogs("INFO",2);
+        assertEquals(0,returnedLogs.size());
+
+        logServer.clearStorage();
+    }
+
+    @Test
+    public void testLimitLargerThanAmount(){
+        String j = MANYLOGS;
+
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        request.setContent(j.getBytes());
+
+        LogServer logServer = new LogServer();
+        logServer.doPost(request, response);
+
+
+
+        MockHttpServletRequest request2 = new MockHttpServletRequest();
+        MockHttpServletResponse response2 = new MockHttpServletResponse();
+        request2.setParameter("limit","11");
+        request2.setParameter("level","DEBUG");
+
+        logServer.doGet(request2, response2);
+        String i = "fail";
+        try {
+            i = response2.getContentAsString();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        //System.out.println(i);
+        JSONArray jsonArray = new JSONArray();
+        try {
+            jsonArray = new JSONArray(response2.getContentAsString());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        assertEquals(10,jsonArray.length());
+        assertEquals(200, response2.getStatus());
+        logServer.clearStorage();
+    }
+
+    @Test
+    public void testNullParameters(){
+        String j = MANYLOGS;
+
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        request.setContent(j.getBytes());
+
+        LogServer logServer = new LogServer();
+        logServer.doPost(request, response);
+
+
+
+        MockHttpServletRequest request2 = new MockHttpServletRequest();
+        MockHttpServletResponse response2 = new MockHttpServletResponse();
+        String lim = null;
+        String lev = null;
+        request2.setParameter("limit",lim);
+        request2.setParameter("level",lev);
+
+        logServer.doGet(request2, response2);
+        assertEquals(400, response2.getStatus());
         logServer.clearStorage();
     }
 

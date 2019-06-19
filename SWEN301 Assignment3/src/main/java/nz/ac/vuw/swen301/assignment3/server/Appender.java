@@ -2,7 +2,9 @@ package nz.ac.vuw.swen301.assignment3.server;
 
 import sun.rmi.runtime.Log;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Appender {
     private ArrayList<LogEvent> logs = new ArrayList<LogEvent>();
@@ -62,9 +64,47 @@ public class Appender {
         }
     }
 
+    public boolean incorrectIDFormatt(String id) {//returns true if no problems
+        try {
+            UUID.fromString(id);
+            return false;
+        } catch (Exception ex) {
+            return true;
+        }
+    }
+
+    public boolean incorrectTimestampFormatt(String timestamp) {//returns true if no problems
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        dateFormat.setLenient(false);
+        Date date = null;
+
+        try {
+            date = dateFormat.parse(timestamp);
+            return false;
+        } catch (ParseException e) {
+            return true;
+        }
+    }
+
     public int append(ArrayList<LogEvent> array) {
         int number = 0;
+        ArrayList<String> IDs = new ArrayList<>();
         for (LogEvent log : array){
+            if(checkNulls(log)){
+                return 400;
+            }
+            if(incorrectTimestampFormatt(log.getTimestamp())){
+                return 400;
+            }
+            if(incorrectIDFormatt(log.getId())){
+                return 400;
+            }
+            if(IDs.contains(log.getId())){
+                return 400;
+            }
+            IDs.add(log.getId());
             number = check(log);
             if(number==400){
                 return 400;
@@ -79,6 +119,32 @@ public class Appender {
         }
         sort();
         return 200;
+    }
+
+    private boolean checkNulls(LogEvent log) {
+        if(log.getTimestamp()==null){
+            return true;
+        }
+        if(log.getLogger()==null){
+            return true;
+        }
+        if(log.getLevel()==null){
+            return true;
+        }
+        if(log.getId()==null){
+            return true;
+        }
+        if(log.getThread()==null){
+            return true;
+        }
+        if(log.getErrorDetails()==null){
+            return true;
+        }
+        if(log.getMessage()==null){
+            return true;
+        }
+
+        return false;
     }
 
     public void clear(){
