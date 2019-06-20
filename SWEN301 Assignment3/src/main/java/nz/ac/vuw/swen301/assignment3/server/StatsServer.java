@@ -1,6 +1,7 @@
 package nz.ac.vuw.swen301.assignment3.server;
 
 import com.google.gson.Gson;
+import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -18,10 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -197,7 +195,16 @@ public class StatsServer extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
         response.setContentType("application/vnd.ms-excel");
+        response.setHeader("Content-Disposition", "filename=\"statsTable.xlsx\"");
+        File srcFile = new File("statsTable.xlsx");
+        try {
+            FileUtils.copyFile(srcFile, response.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         response.setStatus(200);
     }
 

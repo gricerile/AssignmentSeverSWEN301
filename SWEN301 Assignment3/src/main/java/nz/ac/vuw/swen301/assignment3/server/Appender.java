@@ -12,6 +12,18 @@ public class Appender {
 
     public ArrayList<LogEvent> getLogs(String lev, int num) {
         ArrayList<LogEvent> returnLogs = new ArrayList<LogEvent>();
+        if(lev.equals("ALL")){
+            int forLoopLength = 0;
+            if(this.logs.size()>=num){
+                forLoopLength = num;
+            } else{
+                forLoopLength = this.logs.size();
+            }
+            for (int i = 0; i < forLoopLength; i++) {
+                returnLogs.add(this.logs.get(i));
+            }
+            return returnLogs;
+        }
         for (int i = 0; i < this.logs.size(); i++) {
             if(returnLogs.size()<num) {
                 if (this.logs.get(i).getLevel().equals(lev)) {
@@ -118,7 +130,7 @@ public class Appender {
             this.logs.add(log);
         }
         sort();
-        return 200;
+        return 201;
     }
 
     private boolean checkNulls(LogEvent log) {

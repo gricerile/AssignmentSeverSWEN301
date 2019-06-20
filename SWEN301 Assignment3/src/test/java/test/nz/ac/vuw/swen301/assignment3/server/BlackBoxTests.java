@@ -89,7 +89,7 @@ public class BlackBoxTests {
         HttpClient httpClient = HttpClientBuilder.create().build();
         //post request to server
         HttpPost postRequest = new HttpPost(uri);
-        postRequest.setHeader("ContentType", "application/json");
+        postRequest.setHeader("Content-Type", "application/json");
         postRequest.setEntity(new ByteArrayEntity(SINGLELOG.getBytes()));
         HttpResponse postResponse = null;
         try {
@@ -97,7 +97,7 @@ public class BlackBoxTests {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        assertEquals(200,postResponse.getStatusLine().getStatusCode());
+        assertEquals(201,postResponse.getStatusLine().getStatusCode());
 
         Assume.assumeTrue(isServerReady());
         builder = new URIBuilder();
@@ -161,7 +161,6 @@ public class BlackBoxTests {
             e.printStackTrace();
         }
         assertEquals(400,getResponse.getStatusLine().getStatusCode());
-        //assertTrue(getContent.contains("TEST"));
     }
 
     @Test

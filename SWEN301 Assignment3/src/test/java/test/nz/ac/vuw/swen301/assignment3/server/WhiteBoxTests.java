@@ -55,7 +55,7 @@ public class WhiteBoxTests {
 
         LogServer logServer = new LogServer();
         logServer.doPost(request,response);
-        assertEquals(200, response.getStatus());
+        assertEquals(201, response.getStatus());
         ArrayList<LogEvent> serverLogs = logServer.getLogs();
         assertEquals(serverLogs.get(0).getLevel(), "FATAL");
         logServer.clearStorage();
@@ -73,6 +73,7 @@ public class WhiteBoxTests {
         LogServer logServer = new LogServer();
         logServer.doPost(request, response);
         ArrayList<LogEvent> serverLogs = logServer.getLogs();
+        assertEquals(201, response.getStatus());
         assertEquals(serverLogs.get(0).getLevel(), "TRACE");
         assertEquals(serverLogs.get(1).getLevel(), "FATAL");
         logServer.clearStorage();
@@ -567,6 +568,12 @@ public class WhiteBoxTests {
         statsServer.doGet(request2, response2);
         assertEquals(200, response2.getStatus());
         assertEquals("application/vnd.ms-excel",response2.getContentType());
+//        try {
+//            System.out.println(response2.getContentAsString());
+//            assertTrue(response2.getContentAsString().contains("1"));
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
         logServer.clearStorage();
     }
 
@@ -700,6 +707,45 @@ public class WhiteBoxTests {
 
         logServer.doGet(request2, response2);
         assertEquals(400, response2.getStatus());
+        logServer.clearStorage();
+    }
+
+    @Test
+    public void testAllGet(){
+        String j = MANYLOGS;
+
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setContentType("application/json");
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        request.setContent(j.getBytes());
+
+        LogServer logServer = new LogServer();
+        logServer.doPost(request, response);
+
+
+
+        MockHttpServletRequest request2 = new MockHttpServletRequest();
+        MockHttpServletResponse response2 = new MockHttpServletResponse();
+        request2.setParameter("limit","2");
+        request2.setParameter("level","ALL");
+
+        logServer.doGet(request2, response2);
+        assertEquals(200, response2.getStatus());
+        String i = "fail";
+        try {
+            i = response2.getContentAsString();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        //System.out.println(i);
+        JSONArray jsonArray = new JSONArray();
+        try {
+            jsonArray = new JSONArray(response2.getContentAsString());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        assertEquals(2,jsonArray.length());
+        assertEquals(200, response2.getStatus());
         logServer.clearStorage();
     }
 

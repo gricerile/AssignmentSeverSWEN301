@@ -95,17 +95,17 @@ public class LogServer extends HttpServlet {
     //add log events
     //Used to store log events. Note that arrays of log events (and not just single log events) are processed.
     public void doPost(HttpServletRequest request, HttpServletResponse response){
-        if(request.getContentType()==null&&request.getHeader("ContentType")==null){
+        if(request.getContentType()==null&&request.getHeader("Content-Type")==null){
             response.setStatus(400);
             return;
         }
-        if(request.getContentType()==null&&request.getHeader("ContentType")!=null){
-            if(!request.getHeader("ContentType").equals("application/json")){
+        if(request.getContentType()==null&&request.getHeader("Content-Type")!=null){
+            if(!request.getHeader("Content-Type").equals("application/json")){
                 response.setStatus(400);
                 return;
             }
         }
-        if(request.getContentType()!=null&&request.getHeader("ContentType")==null){
+        if(request.getContentType()!=null&&request.getHeader("Content-Type")==null){
             if(!request.getContentType().equals("application/json")){
                 response.setStatus(400);
                 return;
@@ -132,7 +132,7 @@ public class LogServer extends HttpServlet {
             //System.out.print(s);
             LogEvent l = new Gson().fromJson(s, LogEvent.class);
             array.add(l);
-            //System.out.println(l.getLevel());
+            ///System.out.println(l.getLevel());
         }
         int status = this.storage.append(array);
         response.setStatus(status);
