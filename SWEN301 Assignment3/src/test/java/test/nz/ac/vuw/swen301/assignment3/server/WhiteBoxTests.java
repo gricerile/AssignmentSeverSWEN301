@@ -549,33 +549,33 @@ public class WhiteBoxTests {
         logServer.clearStorage();
     }
 
-    @Test
-    public void testStatsServer(){
-        String j = SINGLELOG;
-
-        MockHttpServletRequest request = new MockHttpServletRequest();
-        request.setContentType("application/json");
-        MockHttpServletResponse response = new MockHttpServletResponse();
-        request.setContent(j.getBytes());
-
-        LogServer logServer = new LogServer();
-        logServer.doPost(request, response);
-
-        StatsServer statsServer = new StatsServer();
-        MockHttpServletRequest request2 = new MockHttpServletRequest();
-        MockHttpServletResponse response2 = new MockHttpServletResponse();
-        request2.setParameter("statsRequest");
-        statsServer.doGet(request2, response2);
-        assertEquals(200, response2.getStatus());
-        assertEquals("application/vnd.ms-excel",response2.getContentType());
-//        try {
-//            System.out.println(response2.getContentAsString());
-//            assertTrue(response2.getContentAsString().contains("1"));
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-        logServer.clearStorage();
-    }
+//    @Test
+//    public void testStatsServer(){
+//        String j = SINGLELOG;
+//
+//        MockHttpServletRequest request = new MockHttpServletRequest();
+//        request.setContentType("application/json");
+//        MockHttpServletResponse response = new MockHttpServletResponse();
+//        request.setContent(j.getBytes());
+//
+//        LogServer logServer = new LogServer();
+//        logServer.doPost(request, response);
+//
+//        StatsServer statsServer = new StatsServer();
+//        MockHttpServletRequest request2 = new MockHttpServletRequest();
+//        MockHttpServletResponse response2 = new MockHttpServletResponse();
+//        request2.setParameter("statsRequest");
+//        statsServer.doGet(request2, response2);
+//        assertEquals(200, response2.getStatus());
+//        assertEquals("application/vnd.ms-excel",response2.getContentType());
+////        try {
+////            System.out.println(response2.getContentAsString());
+////            assertTrue(response2.getContentAsString().contains("1"));
+////        } catch (UnsupportedEncodingException e) {
+////            e.printStackTrace();
+////        }
+//        logServer.clearStorage();
+//    }
 
     @Test
     public void testAppenderAdd(){
@@ -748,5 +748,33 @@ public class WhiteBoxTests {
         assertEquals(200, response2.getStatus());
         logServer.clearStorage();
     }
+
+//    @Test
+//    public void testStatsServerContentType(){
+//        String j = SINGLELOG;
+//
+//        MockHttpServletRequest request = new MockHttpServletRequest();
+//        request.setContentType("application/json");
+//        MockHttpServletResponse response = new MockHttpServletResponse();
+//        request.setContent(j.getBytes());
+//
+//        LogServer logServer = new LogServer();
+//        logServer.doPost(request, response);
+//
+//        StatsServer statsServer = new StatsServer();
+//        MockHttpServletRequest request2 = new MockHttpServletRequest();
+//        MockHttpServletResponse response2 = new MockHttpServletResponse();
+//        request2.setParameter("statsRequest");
+//        statsServer.doGet(request2, response2);
+//        assertEquals(200, response2.getStatus());
+//        assertEquals("application/vnd.ms-excel",response2.getContentType());
+////        try {
+////            System.out.println(response2.getContentAsString());
+////            assertTrue(response2.getContentAsString().contains("1"));
+////        } catch (UnsupportedEncodingException e) {
+////            e.printStackTrace();
+////        }
+//        logServer.clearStorage();
+//    }
 
 }

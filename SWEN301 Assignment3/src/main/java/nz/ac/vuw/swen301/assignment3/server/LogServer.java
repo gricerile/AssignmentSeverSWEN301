@@ -99,13 +99,13 @@ public class LogServer extends HttpServlet {
             response.setStatus(400);
             return;
         }
-        if(request.getContentType()==null&&request.getHeader("Content-Type")!=null){
+        if(request.getContentType()==null||request.getHeader("Content-Type")!=null){
             if(!request.getHeader("Content-Type").equals("application/json")){
                 response.setStatus(400);
                 return;
             }
         }
-        if(request.getContentType()!=null&&request.getHeader("Content-Type")==null){
+        if(request.getContentType()!=null||request.getHeader("Content-Type")==null){
             if(!request.getContentType().equals("application/json")){
                 response.setStatus(400);
                 return;
